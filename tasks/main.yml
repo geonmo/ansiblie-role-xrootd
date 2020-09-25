@@ -1,0 +1,7 @@
+---
+# tasks file for geonmo.ansible-xrootd
+- name: Install xrootd package
+  yum:
+    name: xrootd
+    state: present
+
