@@ -11,7 +11,7 @@
     content:
       "oss.space public {{ dir }}\n
        oss.localroot {{ dir }}\n
-       all.export /xrd\n
+       all.export /store\n
        set xrdr={{ rdr }}\n
        all.manager $(xrdr):3121\n
        all.role server\n
@@ -20,6 +20,12 @@
   notify: 
     - restart xrootd
     - restart cmsd
-      
+- name: Create /store directory
+  file:
+    path: "{{ dir }}/store"
+    state: directory
+    mode: "0755"
+    owner: xrootd
+    group: xrootd
 
   

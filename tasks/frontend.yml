@@ -9,7 +9,7 @@
     group: xrootd
     mode: "0644"
     content:
-      "all.export /xrd\n
+      "all.export /store\n
       set xrdr={{ rdr }}\n
       all.manager $(xrdr):3121\n
       all.role manager\n
