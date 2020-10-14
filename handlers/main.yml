@@ -1,2 +1,11 @@
 ---
 # handlers file for geonmo.xrootd
+- name: restart xrootd
+  service: 
+    name: xrootd@benchmark
+    state: restarted
+
+- name: restart cmsd
+  service: 
+    name: cmsd@benchmark
+    state: restarted

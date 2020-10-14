@@ -1,0 +1,19 @@
+- name: Install xrootd-server for rdr
+  yum:
+    name: xrootd-server
+    state: present
+- name: Configure xrootd for rdr
+  copy:
+    dest: /etc/xrootd/xrootd-benchmark.cfg
+    owner: xrootd
+    group: xrootd
+    mode: "0644"
+    content:
+      "all.export /xrd\n
+      set xrdr={{ rdr }}\n
+      all.manager $(xrdr):3121\n
+      all.role manager\n
+      xrd.network nodnr norpipa routes split use {{ device }}\n"
+  notify: 
+    - restart cmsd
+    - restart xrootd

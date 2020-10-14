@@ -1,0 +1,4 @@
+- name: Configure client
+  yum: 
+    name: xrootd-client
+    state: present

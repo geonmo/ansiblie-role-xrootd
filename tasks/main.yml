@@ -5,3 +5,6 @@
     name: xrootd
     state: present
 
+- name: Configure xrootd 
+  include_tasks: "{{ type }}.yml"
+

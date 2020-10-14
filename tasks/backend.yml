@@ -1,0 +1,25 @@
+- name: Install xrootd server package for xrootd server
+  yum:
+    name: xrootd-server
+    state: present
+- name: Configure xrootd for xrootd server
+  copy:
+    dest: /etc/xrootd/xrootd-benchmark.cfg
+    owner: xrootd
+    group: xrootd
+    mode: "0644"
+    content:
+      "oss.space public {{ dir }}\n
+       oss.localroot {{ dir }}\n
+       all.export /xrd\n
+       set xrdr={{ rdr }}\n
+       all.manager $(xrdr):3121\n
+       all.role server\n
+       cms.space min 50m 100m\n
+       xrd.network nodnr norpipa routes split use {{ device }}\n"
+  notify: 
+    - restart xrootd
+    - restart cmsd
+      
+
+  
