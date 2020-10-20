@@ -4,3 +4,9 @@
       - xrootd-client
       - xrootd-fuse
     state: present
+- mount:
+    path:   /mnt/xrootd
+    src:    xrootdfs
+    fstype: fuse
+    opts:   rdr=xroot://node1.intranet.local//store/,uid=vagrant,rw,_netdev
+    state:  present
