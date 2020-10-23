@@ -14,6 +14,16 @@
       all.manager $(xrdr):3121\n
       all.role manager\n
       xrd.network nodnr norpipa routes split use {{ device }}\n"
-  notify: 
+  notify:
     - restart cmsd
     - restart xrootd
+- name: restart xrootd
+  service: 
+    name: xrootd@benchmark
+    state: started
+
+- name: restart cmsd
+  service: 
+    name: cmsd@benchmark
+    state: started
+  
